@@ -35,7 +35,7 @@ function App() {
         className="min-h-screen text-center mt-4 flex flex-col justify-center"
       >
         <div className="mx-auto bg-gradient-to-b from-teal-500 rounded-full w-56 h-56 relative overflow-hidden md:h-96 md:w-96 mb-2 mt-20">
-          <img src="/avatar.png" layout="fill" alt="profileImage" />
+          <img src="/avatar.jpg" layout="fill" alt="profileImage" />
         </div>
         <h1 className="text-3xl md:text-5xl font-medium text-teal-500">
           田久保竜馬
