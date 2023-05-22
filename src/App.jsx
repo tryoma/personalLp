@@ -10,12 +10,14 @@ import { specialSkills, whatICanDos } from './utils/work';
 import ProfileModal from './components/ProfileModal';
 import { TopProfile } from './utils/profile';
 import { CommentPrice } from './utils/price';
+import { Activity } from './utils/activity';
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [isJapanese, setIsJapanese] = useState(true);
   const Profile = isJapanese ? TopProfile.japanese : TopProfile.english;
   const Price = isJapanese ? CommentPrice.japanese : CommentPrice.english;
+  const Activ = isJapanese ? Activity.japanese : Activity.english;
 
   const onClickOpenModal = () => {
     setIsOpen(true);
@@ -71,16 +73,20 @@ function App() {
 
       <section id="work" className="mt-10">
         <h1 className="text-xl font-medium font-bold">
-          得意なこと & できること
+          {isJapanese
+            ? '得意なこと & できること'
+            : 'Special skill & What I can do'}
         </h1>
-        <p className="mt-1 text-md text-gray-500">
+        {/* <p className="mt-1 text-md text-gray-500">
           Special skill & What I can do
-        </p>
+        </p> */}
 
         <div className="flex rounded shadow-md flex-col md:flex-row px-2 py-4">
           <div className="pl-4 mt-2 md:w-4/6">
-            <p className="font-bold">得意なこと</p>
-            <p className="text-gray-500">Special skill</p>
+            <p className="font-bold">
+              {isJapanese ? '得意なこと' : 'Special skill'}
+            </p>
+            {/* <p className="text-gray-500">Special skill</p> */}
             <ul className="list-disc pl-4">
               {specialSkills.map((sS) => (
                 <li key={sS.id}>{isJapanese ? sS.title : sS.englishTitle}</li>
@@ -88,8 +94,10 @@ function App() {
             </ul>
           </div>
           <div className="pl-4 mt-2 md:w-3/6">
-            <p className="font-bold">できること</p>
-            <p className="text-gray-500">What I can do</p>
+            <p className="font-bold">
+              {isJapanese ? 'できること' : 'What I can do'}
+            </p>
+            {/* <p className="text-gray-500">What I can do</p> */}
             <ul className="list-disc pl-4">
               {whatICanDos.map((d) => (
                 <li key={d.id}>{isJapanese ? d.title : d.englishTitle}</li>
@@ -100,13 +108,19 @@ function App() {
       </section>
 
       <section id="contact" className="mt-10">
-        <h1 className="text-xl font-medium">お問い合わせ & ご依頼</h1>
-        <p className="text-gray-500">Contact Me</p>
+        <h1 className="text-xl font-medium">
+          {isJapanese ? 'お問い合わせ & ご依頼' : 'Contact Me'}
+        </h1>
+        {/* <p className="text-gray-500">Contact Me</p> */}
         <div className="flex rounded shadow-md flex-col px-2 py-4">
           <p className="">
-            LINE公式に登録して頂き、依頼してください。
+            {isJapanese
+              ? 'LINE公式に登録して頂き、依頼してください。'
+              : 'Please register with our official LINE account and make your request.'}
             <br />
-            相談だけでも構いませんので、お気軽に問い合わせ頂けたらと思います！
+            {isJapanese
+              ? '相談だけでも構いませんので、お気軽に問い合わせ頂けたらと思います！'
+              : `Feel free to contact us even if it's just for a consultation. We would be happy to assist you!`}
           </p>
           <div className="m-auto my-2 flex flex-row justify-around">
             <a href="https://lin.ee/AAls4Qg" className="my-auto">
@@ -127,16 +141,39 @@ function App() {
       </section>
 
       <section id="contact" className="mt-10">
-        <h1 className="text-xl font-medium">料金</h1>
-        <p className="text-gray-500">Price</p>
+        <h1 className="text-xl font-medium">{isJapanese ? '料金' : 'Price'}</h1>
+        {/* <p className="text-gray-500">Price</p> */}
         <div className="flex rounded shadow-md flex-col px-2 py-4">
           <p className="">
-            <span className="font-bold">初回利用時、1時間無料!</span>
+            <span className="font-bold">
+              {isJapanese
+                ? '初回利用時、1時間無料!'
+                : 'First-time users get 1 hour free!'}
+            </span>
             <br />
-            ※1時間のみの利用でも使用可能です。
+            {isJapanese
+              ? '※1時間のみの利用でも使用可能です。'
+              : 'It is also available for single-use of 1 hour only.'}
           </p>
           <p className="mt-3">
             {Price.split('\n').map((line, index) => (
+              <span key={index}>
+                {line}
+                <br />
+              </span>
+            ))}
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" className="mt-10">
+        <h1 className="text-xl font-medium">
+          {isJapanese ? '活動時間' : 'Activity time'}
+        </h1>
+        {/* <p className="text-gray-500">Activity time</p> */}
+        <div className="flex rounded shadow-md flex-col px-2 py-4">
+          <p className="mt-3">
+            {Activ.split('\n').map((line, index) => (
               <span key={index}>
                 {line}
                 <br />
